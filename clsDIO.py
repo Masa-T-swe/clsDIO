@@ -270,7 +270,10 @@ class clsDIO:
                     Note: 
                         exm.print(cIO.pDobyte[0])
             ''' 
-            self._byte[idx] = self._OutByteEchoback(idx)
+            if __echoback__:
+                self._byte[idx] = self._OutByteEchoback(idx)
+            else:
+                self._byte[idx] = self._parent._dobuf[idx]
             return self._byte[idx]
             
         def _OutByteEchoback(self, prt:int) -> int:
